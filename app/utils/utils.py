@@ -5,7 +5,6 @@ from ultralytics import YOLO
 from transformers import AutoFeatureExtractor, ViTForImageClassification
 from PIL import Image
 import asyncio
-import time
 import torch.nn.functional as F
 from collections import Counter, defaultdict
 
@@ -35,7 +34,7 @@ async def main(file: UploadFile):
     async with aiofiles.open(file.filename, "wb") as f:
         content = file.file.read()  # async read
         await f.write(content)
-    cap = cv2.VideoCapture(rf"C:\Users\maksi\PycharmProjects\hackaton\app\{file.filename}")
+    cap = cv2.VideoCapture(f"{file.filename}")
     start_time = 120
     end_time = 135
     # Вычисляем частоту кадров в видео
@@ -70,7 +69,7 @@ async def main(file: UploadFile):
                 result_cnn = tg.create_task(predict_cnn(image))
                 result_cvt = tg.create_task(predict_cvt(image))
             result_vit = {"class": "Бетон", "prod": 0.3}
-            result_cnn = {"class": "Хуй", "prod": 0.4}
+            result_cnn = {"class": "Грунт", "prod": 0.4}
             result_cvt = {"class": "Бетон", "prod": 0.5}
             all_values = list(result_vit.values()) + list(result_cnn.values()) + list(result_cvt.values())
 
@@ -104,7 +103,7 @@ async def main(file: UploadFile):
         cv2.waitKey(1)
 
     class_totals = defaultdict(lambda: {'sum': 0, 'count': 0})
-
+    print(class_totals, result_dict.items())
     # Обходим входной словарь и собираем суммы и количество для каждого класса
     for key, value in result_dict.items():
         class_name = value['class']
@@ -116,9 +115,9 @@ async def main(file: UploadFile):
     most_common_class = max(class_totals, key=lambda x: class_totals[x]['count'])
 
     # Создаем итоговый словарь только для класса с максимальным количеством
-    result_dict = {most_common_class: {'class': most_common_class,
-                                       'prod': class_totals[most_common_class]['sum'] / class_totals[most_common_class][
-                                           'count']}}
+    result_dict = {'class': most_common_class,
+                   'prod': class_totals[most_common_class]['sum'] / class_totals[most_common_class][
+                       'count']}
 
     cap.release()
     return result_dict

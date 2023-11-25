@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>TrashNet</title>
+</head>
+<body>
+    <div class="gradient"></div>
+    <h1>Trash<span>Net</span></h1>
+    <img src="../static/img/logo.png" class="logo" alt="">
+    <div class="description">
+        TrashNet: Эффективный контроль за строительными отходами через анализ видео с самосвалов.
+    </div>
+    <button class="uploadVideo">Загрузить видео</button>
+    <input type="file" id="fileInput" style="display: none;" accept="video/*">
+    <button class="returnToMain">Вернуться</button>
+    <div class="result">
+        <div>Ошибка</div>
+        <span>Сервер не дал ответа</span>
+    </div>
+    <div class="owl-carousel slider">
+        <img src="../static/img/1.jpg" style= "width: 200px"class="slider__item"></img>
+        <img src="../static/img/2.jpg" style= "width: 200px" class="slider__item"></img>
+        <img src="../static/img/3.jpg" style= "width: 200px" class="slider__item"></img>
+        <img src="../static/img/4.jpg" style= "width: 200px" class="slider__item"></img>
+        <img src="../static/img/5.jpg" style= "width: 200px" class="slider__item"></img>
+        <img src="../static/img/6.jpg" style= "width: 200px" class="slider__item"></img>
+    </div>
+    <div class="modal">
+        <div class="modal__content">
+            <div class="loader"></div>
+            <div id="typed" class="modal__content"></div>
+            <div id="typed-strings">
+                <span>Ваше видео обрабатывается...</span>
+                <span>TrashNet is working...</span>
+                <span>Нейросеть справялется. Всё хорошо... </span>
+                <span>Определяемся с видом мусора</span>
+                <span>Отличаем кирпич от грунта</span>
+                <span>Пьём кофе</span>
+                <span>Уже почти</span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <script src="../static/js/jquary.js"></script>
+    <script src="../static/js/owl.carousel.js"></script>
+    <script src="../static/js/owl.autoplay.js"></script>
+    <script src="../static/js/typed.umd.js"></script>
+    <script src="../static/js/script.js"></script>
+</body>
+</html>
