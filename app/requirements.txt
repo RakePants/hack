@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pip
+uvicorn
+typing
+python-multipart
+opencv-python
+aiofiles
+ultralytics
+transformers
